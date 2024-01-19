@@ -1,21 +1,30 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="fragments/resources :: head('Pagina Home')"></head>
+    <head th:replace="fragments/resource :: head('Pagina Home')"></head>
 <body>
 
 <!-- Attributo dal model cocktaiList-->
-<nav th:replace="fragments/navbar :: topNavbar('')"></nav>
-
-<table>
-    <tbody>
-    <tr th:each="cocktail : ${cocktaiList}">
-        <td th:text="${cocktail.nome}"></td>
-        <td><button><i class="fa-solid fa-book"></i></button></td>
-        <td><button><i class="fa-solid fa-pen-to-square"></i></button></td>
-        <td><button><i class="fa-solid fa-trash-can"></i></button></td>
-    </tr>
-    </tbody>
-</table>
+<nav th:replace="fragments/navbar :: topNavbar()"></nav>
+<main>
+    <div class="container">
+        <h1 class="text-center mt-5">List of Cocktails</h1>
+        <div class="row mt-5">
+            <!-- Lista di coktail -->
+            <div class="col-md-4">
+                <div class="card"  th:each="cocktail : ${cocktails}">
+                    <img th:src="${cocktail.image}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${cocktail.name}"> 1</h5>
+                        <a href="#" class="btn btn-primary"><i class="fa-solid fa-book"></i></a>
+                        <a href="#" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="#" class="btn btn-primary"><i class="fa-solid fa-trash-can"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- ... -->
+        </div>
+    </div>
+</main>
 
 </body>
 </html>
