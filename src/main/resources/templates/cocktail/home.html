@@ -3,7 +3,19 @@
     <head th:replace="fragments/resources :: head('Pagina Home')"></head>
 <body>
 
+<!-- Attributo dal model cocktaiList-->
 <nav th:replace="fragments/navbar :: topNavbar('')"></nav>
+
+<table>
+    <tbody>
+    <tr th:each="cocktail : ${cocktaiList}">
+        <td th:text="${cocktail.nome}"></td>
+        <td><button><i class="fa-solid fa-book"></i></button></td>
+        <td><button><i class="fa-solid fa-pen-to-square"></i></button></td>
+        <td><button><i class="fa-solid fa-trash-can"></i></button></td>
+    </tr>
+    </tbody>
+</table>
 
 </body>
 </html>
