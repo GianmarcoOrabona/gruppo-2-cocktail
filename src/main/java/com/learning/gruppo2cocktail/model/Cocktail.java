@@ -1,15 +1,15 @@
 package com.learning.gruppo2cocktail.model;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
+import java.util.List;
 
+@Entity
+@Table(name = "cocktails")
 public class Cocktail {
     // ATTRIBUTI
 
@@ -29,6 +29,9 @@ public class Cocktail {
     @NotNull
     @Min(value = 1, message = "Price can't be lower than 1")
     private BigDecimal price;
+
+    @OneToMany(mappedBy = "cocktail", orphanRemoval = true)
+    private List<Category> categories;
 
     // GETTER E SETTER
 
@@ -62,5 +65,21 @@ public class Cocktail {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
 }
