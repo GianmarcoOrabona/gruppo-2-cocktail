@@ -25,4 +25,13 @@ public class CocktailController {
         return "cocktail/home";
     }
 
+    @GetMapping("/create")
+    public String create(Model model) {
+        Cocktail cocktail = new Cocktail();
+        model.addAttribute("cocktail", cocktail);
+
+        // Passo tramite Model, la lista degli ingredienti
+        model.addAttribute("ingredientList", cocktailRepository.findAll());
+        return "cocktail/newCocktail";
+    }
 }
